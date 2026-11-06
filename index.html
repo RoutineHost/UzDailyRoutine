@@ -19,7 +19,21 @@
 button:focus-visible,input:focus-visible{outline:3px solid #c7a6d5;outline-offset:2px}.footer{font-size:.8rem;color:var(--muted);text-align:center;margin-top:28px}
 @media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.grid,.two{grid-template-columns:1fr}.day-nav{gap:4px}.day-btn{font-size:.78rem;padding:9px 2px;border-radius:10px}.day-btn span{font-size:.58rem}.item{grid-template-columns:72px 1fr}.hero{padding:22px}.panel{padding:15px}}
 @media print{.nav-wrap{position:static}.day-nav{display:none}.wrap{max-width:none}.hero,.panel,.stat,.day-card{box-shadow:none}body{background:white}}
-.exercise .benefit{margin-top:8px;padding:9px 10px;background:#f2f7f1;border-radius:10px;color:#49634f;font-size:.84rem}.exercise ol{margin:7px 0 0;padding-left:20px;color:#655d6b;font-size:.84rem}.video-toggle{display:inline-block;margin-top:10px;padding:8px 11px;background:#f6edf7;border:1px solid #d9c9df;border-radius:10px;color:#765c82;font-size:.8rem;font-weight:800;cursor:pointer}.video-panel{display:none;margin-top:10px;border:1px solid #e5d9e8;border-radius:13px;overflow:hidden;background:#fff}.video-panel.open{display:block}.video-panel iframe{display:block;width:100%;height:300px;border:0}.video-caption{padding:8px 10px;font-size:.76rem;color:#716777}.workout-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 14px}.workout-overview div{background:#f5eff7;border-radius:12px;padding:10px}.workout-overview b{display:block;color:#594567}.workout-overview span{font-size:.74rem;color:#817687}.preworkout{background:linear-gradient(120deg,#fff5e8,#f7edf7);border:1px solid #ead9e9;border-radius:16px;padding:14px;margin:12px 0}.preworkout h3{margin:0 0 5px;font-size:1rem}.preworkout p{margin:5px 0;font-size:.88rem;color:#65596b}@media(max-width:720px){.workout-overview{grid-template-columns:repeat(3,1fr)}}</style>
+.exercise .benefit{margin-top:8px;padding:9px 10px;background:#f2f7f1;border-radius:10px;color:#49634f;font-size:.84rem}.exercise ol{margin:7px 0 0;padding-left:20px;color:#655d6b;font-size:.84rem}.video-toggle{display:inline-block;margin-top:10px;padding:8px 11px;background:#f6edf7;border:1px solid #d9c9df;border-radius:10px;color:#765c82;font-size:.8rem;font-weight:800;cursor:pointer}.video-panel{display:none;margin-top:10px;border:1px solid #e5d9e8;border-radius:13px;overflow:hidden;background:#fff}.video-panel.open{display:block}.video-panel iframe{display:block;width:100%;height:300px;border:0}.video-caption{padding:8px 10px;font-size:.76rem;color:#716777}.workout-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 14px}.workout-overview div{background:#f5eff7;border-radius:12px;padding:10px}.workout-overview b{display:block;color:#594567}.workout-overview span{font-size:.74rem;color:#817687}.preworkout{background:linear-gradient(120deg,#fff5e8,#f7edf7);border:1px solid #ead9e9;border-radius:16px;padding:14px;margin:12px 0}.preworkout h3{margin:0 0 5px;font-size:1rem}.preworkout p{margin:5px 0;font-size:.88rem;color:#65596b}@media(max-width:720px){.workout-overview{grid-template-columns:repeat(3,1fr)}}
+.day-nav{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.day-btn{text-align:center;text-decoration:none;display:block}
+.day-section{scroll-margin-top:88px}
+.benefit-details,.howto-details,.food-benefits,.demo-details{margin-top:9px;border:1px solid var(--line);border-radius:11px;background:#fff;padding:9px 11px;font-size:.84rem}
+.benefit-details summary,.howto-details summary,.food-benefits summary,.demo-details summary{cursor:pointer;font-weight:800;color:#765c82}
+.benefit-details ul,.food-benefits ul,.howto-details ol{margin:8px 0 2px;padding-left:20px;color:#655d6b}
+.benefit-details li,.food-benefits li,.howto-details li{margin:4px 0}
+.demo-details video{display:block;width:100%;max-height:260px;margin-top:10px;border-radius:10px;background:#17131b}
+.demo-details iframe{display:block;width:100%;height:260px;margin-top:10px;border:0;border-radius:10px}
+.demo-caption,.demo-missing{font-size:.76rem;color:#716777;margin-top:8px}
+.demo-missing{padding:9px 11px;background:#faf6fb;border:1px dashed #d9c9df;border-radius:10px;margin-top:9px}
+.food-benefits{background:#fffaf5}
+@media(max-width:720px){.day-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.day-section .grid{grid-template-columns:1fr}.day-section{scroll-margin-top:115px}}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -78,59 +92,75 @@ const days = [
 {name:"Friday",focus:"Full-body strength",duration:"25–35 min",meals:[["After waking","Idli with sambar and plain curd; add eggs/tofu if desired."],["Before shift / main meal","Rice/roti, dal, mixed vegetables and paneer/tofu/egg/chicken."],["During shift snack","Dates (2–3) with nuts, or fruit with roasted chana."],["During shift meal","Whole-wheat wrap/roti roll with paneer/tofu/chicken and vegetables."],["After shift (if hungry)","Small curd bowl or milk/soy milk."]],exercises:[["Warm-up","Marching, arm swings and gentle squats","4 min"],["Squat to chair","Controlled sit-to-stand","2 × 10–12"],["Incline push-up","Hands on a sturdy counter or wall","2 × 8–10"],["Glute bridge","Pause briefly at the top","2 × 12"],["Standing row with band","If no band, do slow shoulder-blade squeezes","2 × 12"],["Dead bug","Slow, controlled alternating reps","2 × 8 each side"],["Cool-down","Gentle stretches","4 min"]],habits:["Aim for protein across the day, not only at dinner.","Keep water available at work.","Do not train through dizziness or unusual weakness.","Record which exercises felt comfortable."]},
 {name:"Saturday",focus:"Low-impact cardio + balance",duration:"25–30 min",meals:[["After waking","Dalia or oats with milk/soy milk, nuts and banana."],["Before shift / main meal","Fish/chicken or dal/paneer, rice/roti and colourful vegetables."],["During shift snack","Plain yoghurt/curd and fruit."],["During shift meal","Vegetable pulao with peas + raita; add chickpeas or tofu for protein."],["After shift (if hungry)","A small protein-containing snack, then sleep routine."]],exercises:[["Low-impact dance or walk","Choose a comfortable pace; no jumping required","15–20 min"],["Single-leg balance","Hold a chair; stand tall and switch sides","2 × 20 sec each"],["Clamshell","Lie on side, knees bent; open top knee without rolling hips","2 × 10 each"],["Standing side leg raise","Hold support and keep toes forward","2 × 10 each"],["Cool-down","Slow walk and easy stretches","4 min"]],habits:["Get daylight exposure after waking when possible.","Include vegetables of different colours.","Enjoy movement; keep intensity moderate.","Prepare a simple meal for the next day."]},
 {name:"Sunday",focus:"Rest + gentle reset",duration:"10–20 min optional",meals:[["After waking","Vegetable omelette or paneer/tofu bhurji with roti/toast."],["Main meal","Home-style balanced thali: dal/beans, rice/roti, vegetables, curd and protein of choice."],["Snack","Seasonal fruit with nuts/seeds."],["During shift / evening meal","Light but complete meal such as dal khichdi with vegetables and curd."],["Before sleep (if hungry)","Milk/soy milk or a small snack; follow hunger cues."]],exercises:[["Optional easy walk","Comfortable pace","10–15 min"],["Gentle stretching","Choose 3–4 comfortable stretches","5 min"],["Weekly reset","No formal workout required; rest is productive","5 min"]],habits:["Review the week without judging yourself.","Plan groceries and 2–3 easy protein options.","Wash workout clothes and prepare water bottle.","Protect sleep and take a genuine rest day."]}];
-function exerciseCard(e,i){
-var n=e[0].toLowerCase();
-var benefit='Improves movement confidence, mobility and body control.';
-if(n.indexOf('squat')>=0||n.indexOf('lunge')>=0)benefit='Strengthens thighs and glutes for everyday sitting, standing and stair climbing.';
-else if(n.indexOf('push')>=0)benefit='Builds chest, shoulder and arm strength.';
-else if(n.indexOf('bridge')>=0||n.indexOf('clamshell')>=0||n.indexOf('leg raise')>=0)benefit='Strengthens glute and hip muscles that support pelvic stability.';
-else if(n.indexOf('bird dog')>=0||n.indexOf('dead bug')>=0||n.indexOf('plank')>=0)benefit='Trains core stability and coordination.';
-else if(n.indexOf('walk')>=0||n.indexOf('dance')>=0||n.indexOf('march')>=0)benefit='Supports cardiovascular fitness, stamina and mood.';
-var steps=['Set up in a stable, comfortable position.','Move slowly and with control; breathe normally.','Return smoothly. Stop if there is pain or dizziness.'];
-if(n.indexOf('squat')>=0)steps=['Stand in front of a stable chair, feet hip-width apart.','Push hips back and bend knees to lightly touch the chair.','Press through your feet to stand, keeping knees aligned with toes.'];
-else if(n.indexOf('push')>=0)steps=['Place hands on a wall or sturdy counter at chest height.','Step back and keep your body in a straight line.','Bend elbows toward the surface, then push away smoothly.'];
-else if(n.indexOf('bridge')>=0)steps=['Lie on your back with knees bent and feet flat.','Press through heels to lift hips without arching your back.','Pause briefly, then lower slowly.'];
-else if(n.indexOf('bird dog')>=0)steps=['Start on hands and knees, hands under shoulders.','Extend opposite arm and leg while keeping hips level.','Return slowly and switch sides without twisting.'];
-else if(n.indexOf('dead bug')>=0)steps=['Lie on your back with arms raised and knees over hips.','Brace abdomen gently and keep back steady.','Lower opposite arm and leg slowly, return, then switch.'];
-var videoId='female-demo-'+i;
-var demoMap=[
- {match:['bird dog'],url:'https://macrosinc.net/exercises/core/bird-dog/',label:'Bird Dog — female demonstration'},
- {match:['glute bridge'],url:'https://macrosinc.net/exercises/glutes/glute-bridge/',label:'Glute Bridge — female demonstration'},
- {match:['chair/bodyweight squats','squat to chair'],url:'https://macrosinc.net/exercises/legs/bodyweight-box-squat/',label:'Bodyweight Box Squat — female demonstration'},
- {match:['calf raises'],url:'https://macrosinc.net/exercises/legs/standing-calf-raise/',label:'Standing Calf Raise — female demonstration'},
- {match:['supported reverse lunges'],url:'https://macrosinc.net/exercises/legs/dumbbell-lunge/',label:'Lunge — female demonstration'},
- {match:['clamshell'],url:'https://macrosinc.net/exercises/glutes/band-fire-hydrant/',label:'Glute / hip movement — female demonstration'}
-];
-var demo=null;
-for(var di=0;di<demoMap.length;di++){if(demoMap[di].match.some(function(k){return n.indexOf(k)>=0;})){demo=demoMap[di];break;}}
-var videoHtml=demo
- ? '<button type="button" class="video-toggle" data-video="'+videoId+'">▶ Play this exercise demonstration</button><div class="video-panel" id="'+videoId+'"><iframe title="'+demo.label+'" loading="lazy" src="'+demo.url+'" allow="fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="video-caption">'+demo.label+'. This embedded page is specific to this movement and offers the female-demo option.</div></div>'
- : '<div class="video-caption">A verified, matching female demonstration is not yet available for this movement, so no unrelated video is shown.</div>';
-var html='<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><div class="benefit"><b>Benefit:</b> '+benefit+'</div><b>How to do it</b><ol>'+steps.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol><p><b>Sets / time:</b> '+e[2]+'. Rest 45–90 seconds between strength sets.</p>'+videoHtml+'</article>';
-return html;
+function exerciseCard(e,i,dayIndex){
+ const n=e[0].toLowerCase();
+ let benefits=["Builds useful everyday strength and movement confidence.","Improves control and coordination when practised with good form.","Helps develop the muscles used for stable, comfortable movement."];
+ if(n.includes("squat")||n.includes("lunge")) benefits=["Strengthens the quadriceps and glute muscles.","Practises controlled sitting, standing and stair-climbing movement.","Builds lower-body strength and balance."];
+ else if(n.includes("push")) benefits=["Strengthens the chest, shoulders and triceps.","Builds pushing strength for everyday tasks.","Improves upper-body control when performed with a stable trunk."];
+ else if(n.includes("bridge")||n.includes("clamshell")||n.includes("leg raise")) benefits=["Strengthens the glute and hip muscles.","Supports hip and pelvic stability during walking.","Builds lower-body control without needing heavy equipment."];
+ else if(n.includes("bird dog")||n.includes("dead bug")||n.includes("plank")) benefits=["Trains the abdominal and deep core muscles to stabilise the trunk.","Improves coordination between the upper and lower body.","Encourages controlled movement while keeping the spine steady."];
+ else if(n.includes("walk")||n.includes("dance")||n.includes("march")) benefits=["Supports heart and lung fitness.","Builds stamina gradually at a manageable intensity.","Can support mood and help break up long periods of sitting."];
+ else if(n.includes("calf")) benefits=["Strengthens the calf muscles.","Supports ankle control during walking and stairs.","Builds lower-leg endurance."];
+ else if(n.includes("stretch")||n.includes("cat")||n.includes("child")||n.includes("cool")) benefits=["Encourages comfortable joint movement.","Can ease stiffness after sitting or exercise.","Provides a gentle transition into recovery."];
+ let steps=["Set up in a stable, comfortable position.","Move slowly and with control; breathe normally.","Return smoothly to the starting position. Stop if there is pain or dizziness."];
+ if(n.includes("squat"))steps=["Stand with feet about hip-width apart, with a sturdy chair behind you.","Push hips back and bend knees to sit lightly or hover over the chair.","Press through your feet to stand; keep knees tracking in line with toes."];
+ else if(n.includes("push"))steps=["Place hands on a wall or sturdy counter at chest height.","Step back and keep your body in a straight line.","Bend elbows to bring chest toward the surface, then push away smoothly."];
+ else if(n.includes("bridge"))steps=["Lie on your back with knees bent and feet flat, hip-width apart.","Press through your heels to lift hips; keep ribs relaxed.","Pause briefly, then lower slowly without arching your lower back."];
+ else if(n.includes("bird dog"))steps=["Start on hands and knees, hands under shoulders and knees under hips.","Extend one arm and the opposite leg while keeping hips level.","Pause, return slowly and alternate sides without twisting."];
+ else if(n.includes("dead bug"))steps=["Lie on your back with arms raised and knees bent over hips.","Gently brace your abdomen and keep your lower back steady.","Lower opposite arm and leg slowly, return and switch sides."];
+ else if(n.includes("calf"))steps=["Stand tall and hold a wall or sturdy chair lightly.","Rise onto the balls of both feet without rolling ankles outward.","Pause at the top, then lower heels slowly."];
+ const videoMap=[
+  {keys:["bird dog"],url:"https://www.trainaiapp.com/exercises/bird-dog/",type:"page",label:"Bird Dog animated demonstration"},
+  {keys:["chair/bodyweight squats","squat to chair"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/squat.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/squat.jpg"},
+  {keys:["wall push-ups"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/push-ups.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/push-ups.jpg"},
+  {keys:["incline push-up"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/incline-push-ups.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/incline-push-ups.jpg"},
+  {keys:["glute bridge"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hip-raise-bridge.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/hip-raise-bridge.jpg"},
+  {keys:["dead bug"],url:"https://www.trainaiapp.com/exercises/dead-bug/",type:"page",label:"Dead Bug animated demonstration"},
+  {keys:["side plank"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/side-bridge-side-plank.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/side-bridge-side-plank.jpg"},
+  {keys:["calf raises"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/lever-standing-calf-raise.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/lever-standing-calf-raise.jpg"},
+  {keys:["supported reverse lunges"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lunge.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/dumbbell-lunge.jpg"},
+  {keys:["chest opener"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-dynamic-chest-stretch.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/stretching-dynamic-chest-stretch.jpg"}
+ ];
+ let demo=null;
+ for(const item of videoMap){if(item.keys.some(k=>n.includes(k))){demo=item;break;}}
+ const vid="demo-"+dayIndex+"-"+i;
+ let demoMarkup=demo&&demo.type==="video"
+  ? '<details class="demo-details"><summary>▶ Watch this exact exercise (female demonstration)</summary><video controls playsinline preload="none" poster="'+demo.poster+'"><source src="'+demo.url+'" type="video/mp4">Your browser does not support embedded video.</video><p class="demo-caption">This clip is assigned specifically to '+e[0]+'.</p></details>'
+  : demo&&demo.type==="page"
+  ? '<details class="demo-details"><summary>▶ View this exercise animation</summary><iframe loading="lazy" title="'+e[0]+' animated demonstration" src="'+demo.url+'" allow="fullscreen; picture-in-picture"></iframe><p class="demo-caption">Exercise-specific animated guide.</p></details>'
+  : '<div class="demo-missing">A verified female video or GIF for this exact movement is not available in the selected library yet. Follow the written steps rather than watching an unrelated clip.</div>';
+ return '<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><details class="benefit-details"><summary>See 3 benefits</summary><ul>'+benefits.map(x=>'<li>'+x+'</li>').join('')+'</ul></details><details class="howto-details"><summary>How to perform it correctly</summary><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><p><b>Target:</b> '+e[2]+'. Rest 45–90 seconds between strength sets. Breathe normally.</p></details>'+demoMarkup+'</article>';
+}
+function mealBenefits(meal){
+ const t=meal.toLowerCase();
+ if(t.includes("egg")||t.includes("paneer")||t.includes("tofu")||t.includes("chicken")||t.includes("fish")||t.includes("dal")||t.includes("chana")||t.includes("rajma")||t.includes("curd")) return ["Provides protein to support muscle repair and normal body functions.","Combines well with carbohydrates for more sustained fullness and energy.","Dairy, pulses, eggs or soy also contribute useful minerals and vitamins."];
+ if(t.includes("banana")||t.includes("fruit")||t.includes("guava")||t.includes("apple")) return ["Provides carbohydrate that can be used for energy.","Adds fibre and micronutrients, especially when eaten whole.","A convenient snack between meals or during a work shift."];
+ if(t.includes("oats")||t.includes("dalia")||t.includes("rice")||t.includes("roti")||t.includes("poha")||t.includes("idli")) return ["Provides carbohydrate to fuel daily activity and workouts.","Whole-grain versions can add fibre for digestion and fullness.","Pairs well with protein foods to make the meal more balanced."];
+ return ["Contributes energy for daily activities.","Can provide fibre and a range of micronutrients depending on ingredients.","Pair with a protein source and water for a more complete meal."];
 }
 const nav=document.getElementById('dayNav'), content=document.getElementById('dayContent');
-let selected=0;
-function render(){
- nav.innerHTML=days.map((d,i)=>`<button class="day-btn ${i===selected?'active':''}" data-day="${i}" aria-pressed="${i===selected}">${d.name.slice(0,3)}<span>${d.name.slice(0,1)}</span></button>`).join('');
- nav.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{selected=Number(b.dataset.day);render();document.getElementById('dayContent').scrollIntoView({behavior:'smooth',block:'start'});}));
- const d=days[selected], key='herwellness-'+d.name.toLowerCase();
- const saved=JSON.parse(localStorage.getItem(key)||'{}');
- const checks=d.habits.map((h,i)=>`<div class="check ${saved[i]?'done':''}"><input type="checkbox" id="c${i}" data-check="${i}" ${saved[i]?'checked':''}><label for="c${i}">${h}</label></div>`).join('');
- content.innerHTML=`
- <section class="panel">
-  <div class="day-head"><div><div class="tag">${d.focus}</div><h2 style="margin-top:10px">${d.name}'s plan</h2><p class="sub">Wake: around 3:00 PM · Workout: around 3:45 PM · Shift: around 8:00 PM · Sleep: around 8:00 AM.</p></div><div style="min-width:150px"><b id="progressText">0/${d.habits.length} habits</b><div class="progress"><div id="progressBar"></div></div><div class="progress-label">Daily consistency</div></div></div>
-  <div class="grid">
-   <div><div class="section-title">Today's meal schedule</div><div class="timeline">${d.meals.map((m,i)=>`<div class="item meal"><div class="time">${["4:30–5:00 PM","7:00 PM","11:00 PM","2:00–3:00 AM","6:30–7:00 AM"][i]}</div><div><h3>${['Post-workout meal','Pre-shift main meal','Shift snack','Meal during shift','After-shift wind-down'][i]}</h3><p>${m[1]}</p></div></div>`).join('')}</div></div>
-   <div><div class="section-title">Today workout</div><div class="workout-overview"><div><b>${d.duration}</b><span>Total session</span></div><div><b>3:45 PM</b><span>Planned start</span></div><div><b>5–6/10</b><span>Moderate effort</span></div></div><div class="preworkout"><h3>🍌 First: pre-workout snack — 3:15 PM</h3><p><b>Easy option:</b> 1 medium banana + a glass of water. It provides easy-to-digest carbohydrate for workout energy.</p><p><b>Optional:</b> 100–150 ml fresh unsweetened juice. If she is still hungry, add ½ cup plain curd or one slice of toast. Juice is not essential.</p><p>Wait 20–30 minutes before exercising. Skip the workout if she feels dizzy, unusually weak or unwell.</p></div><div class="note" style="margin-bottom:12px"><b>Before you start — have you had your pre-workout snack?</b><br>Around 3:15 PM: 1 medium banana + a glass of water for easy-to-digest workout energy. Optional: 100–150 ml fresh unsweetened juice. If still hungry, add ½ cup plain curd or one slice of toast. Wait 20–30 minutes before starting. Skip exercise if dizzy, unusually weak or unwell.</div><div class="exercise-list">${d.exercises.map((e,i)=>exerciseCard(e,i)).join('')}</div><div class="note soft" style="margin-top:12px"><b>Effort guide:</b> Keep it comfortable to moderate (about 5–6/10). Rest 45–90 seconds between sets. Stop for pain, dizziness, chest discomfort or unusual breathlessness.</div></div>
-  </div>
- </section>
- <section class="panel"><h2>Daily habit checklist</h2><p class="sub">Tick each item as she completes it. Progress is saved on this device/browser.</p><div class="checklist">${checks}</div></section>`;
- content.querySelectorAll('[data-video]').forEach(btn=>btn.addEventListener('click',()=>{const panel=document.getElementById(btn.dataset.video);const opening=!panel.classList.contains('open');panel.classList.toggle('open',opening);btn.textContent=opening?'Hide video guide':'▶ Play female instructor video guide';}));
- content.querySelectorAll('[data-check]').forEach(el=>el.addEventListener('change',()=>{saved[el.dataset.check]=el.checked;localStorage.setItem(key,JSON.stringify(saved));updateProgress();}));
- updateProgress();
- function updateProgress(){const n=d.habits.filter((_,i)=>!!saved[i]).length;document.getElementById('progressText').textContent=`${n}/${d.habits.length} habits`;document.getElementById('progressBar').style.width=`${n/d.habits.length*100}%`;content.querySelectorAll('.check').forEach((el,i)=>el.classList.toggle('done',!!saved[i]));}
-}
+const displayDays=[days[6],...days.slice(0,6)];
+nav.innerHTML=displayDays.map(d=>'<a class="day-btn" href="#day-'+d.name.toLowerCase()+'">'+d.name+'</a>').join('');
+const daySections=displayDays.map((d,di)=>{
+ const key='herwellness-'+d.name.toLowerCase();
+ const meals=d.meals.map((m,i)=>{
+  const labels=["Post-workout meal","Pre-shift main meal","Shift snack","Meal during shift","After-shift wind-down"];
+  const times=["4:30–5:00 PM","7:00 PM","11:00 PM","2:00–3:00 AM","6:30–7:00 AM"];
+  const b=mealBenefits(m[1]);
+  return '<div class="item meal"><div class="time">'+times[i]+'</div><div><h3>'+labels[i]+'</h3><p>'+m[1]+'</p><details class="food-benefits"><summary>Why this meal helps</summary><ul>'+b.map(x=>'<li>'+x+'</li>').join('')+'</ul></details></div></div>';
+ }).join('');
+ const exercises=d.exercises.map((e,i)=>exerciseCard(e,i,di)).join('');
+ const habits=d.habits.map((h,i)=>'<label class="check"><input type="checkbox" data-habit="'+d.name.toLowerCase()+'-'+i+'"><span>'+h+'</span></label>').join('');
+ return '<section class="panel day-section" id="day-'+d.name.toLowerCase()+'"><div class="day-head"><div><div class="tag">'+d.focus+'</div><h2>'+d.name+' workout & meal plan</h2><p class="sub">Wake ~3:00 PM · Pre-workout snack ~3:15 PM · Workout ~3:45 PM · Shift ~8:00 PM · Sleep ~8:00 AM</p></div><span class="tag">'+d.duration+'</span></div><div class="workout-overview"><div><b>'+d.duration+'</b><span>Session time</span></div><div><b>3:45 PM</b><span>Workout start</span></div><div><b>5–6/10</b><span>Comfortable effort</span></div></div><div class="preworkout"><h3>🍌 Pre-workout snack · 3:15 PM</h3><p><b>Easy option:</b> one medium banana + a glass of water. Optional 100–150 ml fresh unsweetened juice. If still hungry, add half a cup of plain curd or one slice of toast. Wait 20–30 minutes before exercising.</p><p><b>Why:</b> carbohydrate provides readily available workout fuel; water supports hydration. Juice is optional, and whole fruit is more filling.</p></div><div class="grid"><div><div class="section-title">Meal plan</div><div class="timeline">'+meals+'</div></div><div><div class="section-title">Exercise guide</div><div class="exercise-list">'+exercises+'</div></div></div><div class="section-title" style="margin-top:18px">Daily habits</div><div class="checklist">'+habits+'</div></section>';
+}).join('');
+content.innerHTML=daySections;
+document.querySelectorAll('[data-habit]').forEach(el=>{
+ const k='herwellness-habits';
+ const state=JSON.parse(localStorage.getItem(k)||'{}');
+ el.checked=!!state[el.dataset.habit];
+ el.addEventListener('change',()=>{state[el.dataset.habit]=el.checked;localStorage.setItem(k,JSON.stringify(state));});
+});
+
 render();
 </script>
 </body>
