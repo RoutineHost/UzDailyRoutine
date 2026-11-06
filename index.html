@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f4eaf4">
+<title>Her Wellness — Weekly Planner</title>
+<style>
+:root{--ink:#342b3d;--muted:#817687;--lav:#8b6b9c;--lav2:#eee4f1;--pink:#f4dfe8;--cream:#fffaf5;--sage:#dce9df;--sageink:#456b54;--line:#eadfe9;--white:#fff;--shadow:0 12px 34px rgba(69,47,76,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(160deg,#f8f0f7 0%,#fffaf5 48%,#eef5ef 100%);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:1080px;margin:auto;padding:22px 16px 60px}.hero{padding:28px;border-radius:28px;background:linear-gradient(120deg,#eadcf0,#f8e8ed 58%,#e4eee5);box-shadow:var(--shadow);position:relative;overflow:hidden}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:800;color:#765c82}.hero h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin:8px 0;color:#3b3043}.hero p{max-width:720px;margin:10px 0 0;color:#665a6c}.hero .pill{display:inline-block;margin-top:16px;padding:7px 12px;background:#ffffffa8;border:1px solid #ffffffc9;border-radius:99px;font-size:.8rem;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}.stat,.panel,.day-card{background:#ffffffd9;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.stat{padding:14px}.stat b{display:block;font-size:1.05rem}.stat small{color:var(--muted)}
+.nav-wrap{position:sticky;top:0;z-index:10;padding:10px 0;background:#fffaf5eF;backdrop-filter:blur(12px)}.day-nav{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day-btn{border:1px solid var(--line);background:white;color:#67596e;border-radius:14px;padding:10px 4px;font-weight:750;cursor:pointer;transition:.2s}.day-btn span{display:block;font-size:.68rem;font-weight:500;color:#95899a}.day-btn.active{background:var(--lav);color:white;border-color:var(--lav);box-shadow:0 6px 16px #8b6b9c40}.day-btn.active span{color:#f5eefa}
+.panel{padding:20px;margin:18px 0}.panel h2,.day-card h2{font-family:Georgia,serif;margin:0 0 8px;font-size:1.55rem}.sub{color:var(--muted);margin:0 0 16px}.day-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}.tag{display:inline-block;background:var(--sage);color:var(--sageink);font-size:.76rem;font-weight:800;padding:6px 10px;border-radius:99px}.progress{height:9px;background:#eee8ef;border-radius:20px;overflow:hidden;margin:10px 0 4px}.progress>div{height:100%;background:linear-gradient(90deg,#9b7bab,#d99bb4);width:0%;transition:width .25s}.progress-label{font-size:.78rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.section-title{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--lav);font-weight:850;margin:0 0 12px}.timeline{display:grid;gap:10px}.item{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:12px;border:1px solid var(--line);border-radius:15px;background:#fff}.time{font-size:.78rem;font-weight:800;color:var(--lav);padding-top:2px}.item h3{font-size:.98rem;margin:0 0 3px}.item p{font-size:.88rem;color:#706675;margin:0}.meal{border-left:4px solid #d9b2c9}.workout{border-left:4px solid #9db9a2}.recovery{border-left:4px solid #d8c38e}
+.exercise-list{display:grid;gap:9px}.exercise{padding:12px;border:1px solid var(--line);border-radius:14px;background:#fff}.exercise h3{margin:0;font-size:.95rem}.exercise p{margin:4px 0 0;color:#716777;font-size:.86rem}.dose{color:var(--sageink);font-weight:800;font-size:.8rem}
+.checklist{display:grid;gap:9px}.check{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:13px;background:#fff;border:1px solid var(--line);font-size:.9rem}.check input{accent-color:var(--lav);width:18px;height:18px;margin:2px 0 0;flex:none}.check.done label{text-decoration:line-through;color:#988f9c}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.note{background:#fff7ed;border:1px solid #f0dfc8;border-radius:16px;padding:14px;color:#675748;font-size:.88rem}.soft{background:#f2f7f1;border-color:#dce9df;color:#49634f}.callout{padding:14px;border-radius:15px;background:var(--lav2);color:#5e4a68;font-size:.9rem}
+button:focus-visible,input:focus-visible{outline:3px solid #c7a6d5;outline-offset:2px}.footer{font-size:.8rem;color:var(--muted);text-align:center;margin-top:28px}
+@media(max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}.grid,.two{grid-template-columns:1fr}.day-nav{gap:4px}.day-btn{font-size:.78rem;padding:9px 2px;border-radius:10px}.day-btn span{font-size:.58rem}.item{grid-template-columns:72px 1fr}.hero{padding:22px}.panel{padding:15px}}
+@media print{.nav-wrap{position:static}.day-nav{display:none}.wrap{max-width:none}.hero,.panel,.stat,.day-card{box-shadow:none}body{background:white}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">A gentle, consistent routine</div>
+  <h1>Her Wellness<br>Weekly Planner</h1>
+  <p>A practical seven-day plan for strength, steady energy, nourishing meals, skin and hair-supportive nutrition, and recovery — adapted to night-shift life.</p>
+  <div class="pill">52 kg · 5 ft · Age 27 · Home workout plan</div>
+</header>
+<section class="stats" aria-label="Weekly targets">
+  <div class="stat"><b>20–35 min</b><small>Movement most days</small></div>
+  <div class="stat"><b>2–3 days</b><small>Strength focus</small></div>
+  <div class="stat"><b>7–9 hours</b><small>Sleep opportunity</small></div>
+  <div class="stat"><b>Regular meals</b><small>Fuel around her shift</small></div>
+</section>
+<div class="nav-wrap"><nav class="day-nav" aria-label="Choose a day" id="dayNav"></nav></div>
+<main id="dayContent" aria-live="polite"></main>
+<section class="panel">
+  <h2>Daily nutrition guide</h2>
+  <p class="sub">Use this as a flexible pattern, not a strict diet. Portions should match hunger, activity and appetite.</p>
+  <div class="two">
+    <div class="note soft"><b>Build a satisfying main meal</b><br>½ plate vegetables, ¼ protein (dal, chana, rajma, eggs, paneer, curd, fish or chicken), and ¼ rice/roti/millets. Add a little healthy fat.</div>
+    <div class="note"><b>Support iron intake</b><br>Include dal, beans, chickpeas, leafy greens, sesame, eggs or meat if eaten. Pair plant iron with vitamin-C foods she tolerates, such as cooked capsicum, tomato or guava. Amla and sour drinks are not required.</div>
+    <div class="note"><b>Hair and skin nutrition</b><br>Prioritise adequate protein, iron, zinc, omega-3 sources, colourful vegetables and enough total food. No food or drink can guarantee acne-free skin or hair regrowth.</div>
+    <div class="note soft"><b>Hydration and caffeine</b><br>Keep water nearby and drink regularly. If using tea/coffee, keep it earlier in her waking period and avoid it within about 6–8 hours of planned sleep if it affects rest.</div>
+  </div>
+</section>
+<section class="panel">
+  <h2>Night-shift timing: how to use this plan</h2>
+  <p class="sub">Follow the order relative to when she wakes and starts work, rather than forcing conventional clock times.</p>
+  <div class="timeline">
+    <div class="item"><div class="time">After waking</div><div><h3>Hydrate + first meal</h3><p>Water, then a balanced meal within a comfortable period after waking. Get daylight exposure if possible.</p></div></div>
+    <div class="item"><div class="time">Before shift</div><div><h3>Main meal + movement</h3><p>Have a proper meal. Do the day's workout before work if energy allows; otherwise do a shorter walk or mobility session.</p></div></div>
+    <div class="item"><div class="time">During shift</div><div><h3>Meal + planned snack</h3><p>Pack a balanced meal and one snack. Avoid relying on sugary energy drinks or skipping meals.</p></div></div>
+    <div class="item"><div class="time">After shift</div><div><h3>Light food, wind down, sleep</h3><p>If hungry, choose a small snack. Keep the room dark, quiet and cool; aim for 7–9 hours of sleep.</p></div></div>
+  </div>
+</section>
+<section class="panel">
+  <h2>Health notes worth acting on</h2>
+  <div class="callout"><b>Important:</b> Periods that have become unusually light (1–2 days), fatigue/sleepiness, acne and hair thinning together deserve a medical assessment. Please arrange a gynaecologist or primary-care appointment rather than assuming it is a hormone imbalance. A clinician may consider pregnancy testing if relevant, thyroid testing, CBC/ferritin and other tests based on her history. Do not stop or change any medication without speaking to the prescriber.</div>
+  <p class="sub" style="margin-top:12px">Homeopathic products are not proven to regulate periods or treat the causes of hair thinning/acne. Tell her clinician exactly what she is taking, including the product name and ingredients.</p>
+  <p class="sub">Seek urgent care for very heavy bleeding (soaking a pad hourly for 2 hours), fainting, severe pelvic pain, chest pain or shortness of breath.</p>
+</section>
+<div class="footer">Made for consistency, nourishment and recovery. Tick habits as she completes them; progress is not a test of perfection.</div>
+</div>
+<script>
+const days = [
+{name:"Monday",focus:"Full-body strength · gentle start",duration:"25–30 min",meals:[["After waking","Besan chilla with paneer or tofu + plain curd; water."],["Before shift / main meal","Rice or 2 rotis, dal, mixed vegetables and curd. Add egg/chicken/fish if preferred."],["During shift snack","Banana + a small handful of almonds or roasted chana."],["During shift meal","Vegetable khichdi with moong dal and a side of curd."],["After shift (if hungry)","Milk or unsweetened soy milk; then wind down."]],exercises:[["Warm-up","March in place, shoulder circles, hip circles","4 min"],["Chair/bodyweight squats","Sit back to a chair and stand; keep knees comfortable","2 sets × 10"],["Wall push-ups","Hands on wall, body straight, slow controlled reps","2 × 8–10"],["Glute bridges","Lie on back, lift hips without arching lower back","2 × 12"],["Bird dog","Extend opposite arm and leg; keep trunk steady","2 × 8 each side"],["Cool-down","Gentle full-body stretches and slow breathing","4 min"]],habits:["Drink water regularly through waking hours.","Eat a protein source in at least 3 meals/snacks.","Take a relaxed 10-minute walk if comfortable.","Keep a consistent sleep window after shift."]},
+{name:"Tuesday",focus:"Walking + core stability",duration:"25–30 min",meals:[["After waking","Oats cooked in milk/fortified soy milk, chia seeds, banana and nuts."],["Before shift / main meal","2 rotis, chana masala, spinach or other cooked greens and cucumber."],["During shift snack","Plain curd/yoghurt with fruit or roasted makhana."],["During shift meal","Egg/paneer/tofu bhurji, roti and cooked vegetables."],["After shift (if hungry)","Small bowl of oats or milk; avoid a large heavy meal if it disrupts sleep."]],exercises:[["Brisk walk / indoor walk","Comfortably faster pace; should still be able to speak in sentences","15–20 min"],["Dead bug","On back, lower opposite arm and leg slowly; keep back comfortable","2 × 8 each side"],["Standing knee raise","Lift one knee at a time without leaning back","2 × 10 each"],["Side plank from knees","Keep shoulder over elbow; stop if painful","2 × 15–20 sec each"],["Cool-down","Calf, hip-flexor and back stretches","3–4 min"]],habits:["Include a fruit and at least 2 kinds of vegetables.","Take a screen break and move gently during shift.","Avoid caffeine close to planned sleep.","Note energy level before and after movement."]},
+{name:"Wednesday",focus:"Lower body + posture",duration:"25–30 min",meals:[["After waking","2 eggs (or tofu/paneer) with whole-grain toast/roti and fruit."],["Before shift / main meal","Rajma or kala chana, rice, cooked vegetables and curd."],["During shift snack","Guava or banana with pumpkin seeds."],["During shift meal","Chicken/fish/paneer/tofu with roti and vegetable sabzi."],["After shift (if hungry)","Plain milk/soy milk or a small bowl of curd."]],exercises:[["Warm-up","Easy marching, ankle rolls and hip hinges","4 min"],["Supported reverse lunges","Hold a chair; step back only as far as comfortable","2 × 8 each leg"],["Hip hinge","Push hips back with a neutral spine; bodyweight only","2 × 12"],["Calf raises","Hold a wall for balance","2 × 12"],["Wall angels","Slide arms up/down wall within comfortable range","2 × 10"],["Cool-down","Gentle leg and shoulder stretches","4 min"]],habits:["Have a protein-rich main meal.","Add a seed or nut serving if tolerated.","Take a short walk after one meal.","Prioritise a dark, quiet sleep environment."]},
+{name:"Thursday",focus:"Recovery + mobility",duration:"15–25 min",meals:[["After waking","Vegetable poha with peanuts and a side of curd."],["Before shift / main meal","Moong dal, rice/roti, pumpkin or seasonal vegetables and curd."],["During shift snack","Apple/pear/banana with walnuts or roasted chana."],["During shift meal","Paneer/tofu/egg curry with roti and vegetables."],["After shift (if hungry)","A small banana or warm milk/fortified soy milk."]],exercises:[["Easy walk","Relaxed pace outdoors or indoors","10–15 min"],["Cat-cow","Move gently through comfortable spinal range","8 reps"],["Child's pose","Use cushion support if needed","30 sec × 2"],["Chest opener","Gentle doorway stretch; no forcing","20 sec × 2"],["Breathing","Slow comfortable breathing, no breath-holding","3 min"]],habits:["Make this a lighter day; recovery is part of training.","Eat enough; do not compensate for a rest day by skipping meals.","Prepare meals/snacks for the next shift.","Try to keep sleep and wake times consistent."]},
+{name:"Friday",focus:"Full-body strength",duration:"25–35 min",meals:[["After waking","Idli with sambar and plain curd; add eggs/tofu if desired."],["Before shift / main meal","Rice/roti, dal, mixed vegetables and paneer/tofu/egg/chicken."],["During shift snack","Dates (2–3) with nuts, or fruit with roasted chana."],["During shift meal","Whole-wheat wrap/roti roll with paneer/tofu/chicken and vegetables."],["After shift (if hungry)","Small curd bowl or milk/soy milk."]],exercises:[["Warm-up","Marching, arm swings and gentle squats","4 min"],["Squat to chair","Controlled sit-to-stand","2 × 10–12"],["Incline push-up","Hands on a sturdy counter or wall","2 × 8–10"],["Glute bridge","Pause briefly at the top","2 × 12"],["Standing row with band","If no band, do slow shoulder-blade squeezes","2 × 12"],["Dead bug","Slow, controlled alternating reps","2 × 8 each side"],["Cool-down","Gentle stretches","4 min"]],habits:["Aim for protein across the day, not only at dinner.","Keep water available at work.","Do not train through dizziness or unusual weakness.","Record which exercises felt comfortable."]},
+{name:"Saturday",focus:"Low-impact cardio + balance",duration:"25–30 min",meals:[["After waking","Dalia or oats with milk/soy milk, nuts and banana."],["Before shift / main meal","Fish/chicken or dal/paneer, rice/roti and colourful vegetables."],["During shift snack","Plain yoghurt/curd and fruit."],["During shift meal","Vegetable pulao with peas + raita; add chickpeas or tofu for protein."],["After shift (if hungry)","A small protein-containing snack, then sleep routine."]],exercises:[["Low-impact dance or walk","Choose a comfortable pace; no jumping required","15–20 min"],["Single-leg balance","Hold a chair; stand tall and switch sides","2 × 20 sec each"],["Clamshell","Lie on side, knees bent; open top knee without rolling hips","2 × 10 each"],["Standing side leg raise","Hold support and keep toes forward","2 × 10 each"],["Cool-down","Slow walk and easy stretches","4 min"]],habits:["Get daylight exposure after waking when possible.","Include vegetables of different colours.","Enjoy movement; keep intensity moderate.","Prepare a simple meal for the next day."]},
+{name:"Sunday",focus:"Rest + gentle reset",duration:"10–20 min optional",meals:[["After waking","Vegetable omelette or paneer/tofu bhurji with roti/toast."],["Main meal","Home-style balanced thali: dal/beans, rice/roti, vegetables, curd and protein of choice."],["Snack","Seasonal fruit with nuts/seeds."],["During shift / evening meal","Light but complete meal such as dal khichdi with vegetables and curd."],["Before sleep (if hungry)","Milk/soy milk or a small snack; follow hunger cues."]],exercises:[["Optional easy walk","Comfortable pace","10–15 min"],["Gentle stretching","Choose 3–4 comfortable stretches","5 min"],["Weekly reset","No formal workout required; rest is productive","5 min"]],habits:["Review the week without judging yourself.","Plan groceries and 2–3 easy protein options.","Wash workout clothes and prepare water bottle.","Protect sleep and take a genuine rest day."]}];
+const nav=document.getElementById('dayNav'), content=document.getElementById('dayContent');
+let selected=0;
+function render(){
+ nav.innerHTML=days.map((d,i)=>`<button class="day-btn ${i===selected?'active':''}" data-day="${i}" aria-pressed="${i===selected}">${d.name.slice(0,3)}<span>${d.name.slice(0,1)}</span></button>`).join('');
+ nav.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{selected=Number(b.dataset.day);render();document.getElementById('dayContent').scrollIntoView({behavior:'smooth',block:'start'});}));
+ const d=days[selected], key='herwellness-'+d.name.toLowerCase();
+ const saved=JSON.parse(localStorage.getItem(key)||'{}');
+ const checks=d.habits.map((h,i)=>`<div class="check ${saved[i]?'done':''}"><input type="checkbox" id="c${i}" data-check="${i}" ${saved[i]?'checked':''}><label for="c${i}">${h}</label></div>`).join('');
+ content.innerHTML=`
+ <section class="panel">
+  <div class="day-head"><div><div class="tag">${d.focus}</div><h2 style="margin-top:10px">${d.name}'s plan</h2><p class="sub">Workout time: ${d.duration} · Adjust the clock times to her actual shift.</p></div><div style="min-width:150px"><b id="progressText">0/${d.habits.length} habits</b><div class="progress"><div id="progressBar"></div></div><div class="progress-label">Daily consistency</div></div></div>
+  <div class="grid">
+   <div><div class="section-title">Today's meal schedule</div><div class="timeline">${d.meals.map((m,i)=>`<div class="item meal"><div class="time">${m[0]}</div><div><h3>${i===1?'Main meal':i===0?'First meal':i===2?'Snack':i===3?'Shift meal':'Wind-down'}</h3><p>${m[1]}</p></div></div>`).join('')}</div></div>
+   <div><div class="section-title">Workout · ${d.duration}</div><div class="exercise-list">${d.exercises.map(e=>`<div class="exercise"><h3>${e[0]} <span class="dose">· ${e[2]}</span></h3><p>${e[1]}</p></div>`).join('')}</div><div class="note soft" style="margin-top:12px"><b>Effort guide:</b> Keep it comfortable to moderate (about 5–6/10). Rest 45–90 seconds between sets. Stop for pain, dizziness, chest discomfort or unusual breathlessness.</div></div>
+  </div>
+ </section>
+ <section class="panel"><h2>Daily habit checklist</h2><p class="sub">Tick each item as she completes it. Progress is saved on this device/browser.</p><div class="checklist">${checks}</div></section>`;
+ content.querySelectorAll('[data-check]').forEach(el=>el.addEventListener('change',()=>{saved[el.dataset.check]=el.checked;localStorage.setItem(key,JSON.stringify(saved));updateProgress();}));
+ updateProgress();
+ function updateProgress(){const n=d.habits.filter((_,i)=>!!saved[i]).length;document.getElementById('progressText').textContent=`${n}/${d.habits.length} habits`;document.getElementById('progressBar').style.width=`${n/d.habits.length*100}%`;content.querySelectorAll('.check').forEach((el,i)=>el.classList.toggle('done',!!saved[i]));}
+}
+render();
+</script>
+</body>
+</html>
