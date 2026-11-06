@@ -41,7 +41,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #c7a6d5;outline-offse
 .preworkout{background:linear-gradient(125deg,#fff0dc,#fff8ed 55%,#f7edf8);border:1px solid #efd7b6;border-radius:18px;padding:16px;margin:14px 0 20px}.preworkout h3{font-size:1.08rem;color:#573d2b;margin:0 0 8px}.preworkout p{font-size:.9rem;color:#655348;margin:7px 0}
 .exercise{border-radius:16px;padding:14px;border:1px solid #e9e0ef;box-shadow:0 5px 16px rgba(60,40,80,.04)}
 .benefit-details,.howto-details,.demo-details{border-radius:12px;background:#fcf9ff;border-color:#e9dff0}.benefit-details summary,.howto-details summary,.demo-details summary{color:#67458c;font-weight:800;cursor:pointer}
-@media(max-width:720px){.day-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.day-section{padding:15px;scroll-margin-top:120px}}.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#17131b;border-radius:12px;overflow:hidden;margin-top:10px}.video-frame iframe{width:100%;height:100%;border:0}.health-note{background:#fff9ef;border-color:#ead8bb}.health-note h2{color:#765b38}.health-note p{font-size:.9rem;color:#655747}.demo-details video{display:block;width:100%;max-height:360px;background:#17131b;border-radius:12px;margin-top:10px}</style>
+@media(max-width:720px){.day-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.day-section{padding:15px;scroll-margin-top:120px}}.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#17131b;border-radius:12px;overflow:hidden;margin-top:10px}.video-frame iframe{width:100%;height:100%;border:0}.health-note{background:#fff9ef;border-color:#ead8bb}.health-note h2{color:#765b38}.health-note p{font-size:.9rem;color:#655747}.demo-details video{display:block;width:100%;max-height:360px;background:#17131b;border-radius:12px;margin-top:10px}.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#17131b;border-radius:12px;overflow:hidden;margin-top:10px}.video-frame iframe{width:100%;height:100%;border:0}.demo-details video{width:100%;max-height:360px}</style>
 </head>
 <body>
 <div class="wrap">
@@ -104,7 +104,8 @@ function exerciseCard(e,i,dayIndex){
   // Added only for movements that had no original demo mapping. Original female library entries above are preserved.
   {keys:["cat-cow"],url:"https://www.youtube.com/embed/FLQDjUccsko",type:"youtube",label:"Cat-Cow mobility demonstration"},
   {keys:["child's pose"],url:"https://www.youtube.com/embed/KVItAfkdGi0",type:"youtube",label:"Child's Pose demonstration"},
-  {keys:["lateral raise"],url:"https://www.youtube.com/embed/50usqUBOahg",type:"youtube",label:"Lateral Raise shoulder demonstration"},
+  {keys:["cool-down"],url:"https://www.youtube.com/embed/1kD_Q-cxgNA",type:"youtube",label:"Female-led full-body cool-down · Julia Reppel"},
+  {keys:["lateral raise"],url:"https://macrosinc.net/exercises/shoulders/dumbbell-lateral-raise/",type:"page",label:"Female Dumbbell Lateral Raise demonstration"},
   {keys:["bicep curl"],url:"https://www.youtube.com/embed/5mDNhIwhsu0",type:"youtube",label:"Biceps Curl demonstration"},
   {keys:["wall angels"],url:"https://video.wixstatic.com/video/953634_be5ebfe0d80c4196bfceea8b79f1ecf7/1080p/mp4/file.mp4",type:"video",label:"Wall Angels shoulder mobility demonstration"}
 
@@ -115,7 +116,7 @@ function exerciseCard(e,i,dayIndex){
  let demoMarkup=demo&&demo.type==="video"
   ? '<details class="demo-details"><summary>▶ Watch this exact exercise (female demonstration)</summary><video controls playsinline muted loop preload="none" poster="'+(demo.poster||"")+'"><source src="'+demo.url+'#t=0,10" type="video/mp4">Your browser does not support embedded video.</video><p class="demo-caption">This clip is assigned specifically to '+e[0]+'.</p></details>'
   : demo&&demo.type==="page"
-  ? '<details class="demo-details"><summary>▶ View this exercise animation</summary><iframe loading="lazy" title="'+e[0]+' animated demonstration" src="'+demo.url+'" allow="fullscreen; picture-in-picture"></iframe><p class="demo-caption">Exercise-specific animated guide.</p></details>'
+  ? '<details class="demo-details"><summary>▶ View '+(demo.label||e[0])+'</summary><div class="video-frame"><iframe loading="lazy" title="'+(demo.label||e[0])+'" src="'+demo.url+'" allow="fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="demo-caption">Exercise-specific demonstration displayed inside this planner.</p></details>'
   : demo&&demo.type==="youtube"
   ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><div class="video-frame"><iframe loading="lazy" title="'+demo.label+'" src="'+demo.url+'?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="demo-caption">Supplemental embedded demonstration for '+e[0]+'.</p></details>'
   : '<div class="demo-missing">No matching demonstration has been added for this movement yet. Follow the written steps and move gently.</div>';
