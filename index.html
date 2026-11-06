@@ -90,29 +90,35 @@ function exerciseCard(e,i,dayIndex){
  else if(n.includes("dead bug"))steps=["Lie on your back with arms raised and knees bent over hips.","Gently brace your abdomen and keep your lower back steady.","Lower opposite arm and leg slowly, return and switch sides."];
  else if(n.includes("calf"))steps=["Stand tall and hold a wall or sturdy chair lightly.","Rise onto the balls of both feet without rolling ankles outward.","Pause at the top, then lower heels slowly."];
  const videoMap=[
-  {keys:["bird dog"],url:"https://www.youtube.com/embed/XPQy5LcnZok",type:"youtube",label:"Bird Dog · physiotherapist demonstration"},
-  {keys:["chair/bodyweight squats","squat to chair"],url:"https://www.youtube.com/embed/nBTZZufrlc8",type:"youtube",label:"Squat demonstration"},
-  {keys:["incline push-up"],url:"https://www.youtube.com/embed/jAUeJV4TCus",type:"youtube",label:"Wall push-up · physical therapist demonstration"},
-  {keys:["glute bridge"],url:"https://www.youtube.com/embed/OH35NPFSx1Q",type:"youtube",label:"Glute bridge demonstration"},
-  {keys:["dead bug"],url:"https://www.youtube.com/embed/xTXu_C_Q1w8",type:"youtube",label:"Dead Bug · Catalyst Physical Therapy"},
-  
-  
-  {keys:["cat-cow"],url:"https://www.youtube.com/embed/FLQDjUccsko",type:"youtube",label:"Cat-cow mobility demonstration"},
-  {keys:["child's pose"],url:"https://www.youtube.com/embed/KVItAfkdGi0",type:"youtube",label:"Child's pose demonstration"},
-  {keys:["lateral raise","side raise"],url:"https://www.youtube.com/embed/50usqUBOahg",type:"youtube",label:"Lateral raise · shoulder demonstration"},
-  {keys:["bicep curl"],url:"https://www.youtube.com/embed/5mDNhIwhsu0",type:"youtube",label:"Biceps curl demonstration"},
-  {keys:["wall angels","wall slides"],url:"https://video.wixstatic.com/video/953634_be5ebfe0d80c4196bfceea8b79f1ecf7/1080p/mp4/file.mp4",type:"video",label:"Wall Angels · shoulder mobility demonstration"}
+  {keys:["bird dog"],url:"https://www.trainaiapp.com/exercises/bird-dog/",type:"page",label:"Bird Dog animated demonstration"},
+  {keys:["chair/bodyweight squats","squat to chair"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/squat.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/squat.jpg"},
+  {keys:["incline push-up"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/incline-push-ups.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/incline-push-ups.jpg"},
+  {keys:["incline push-up"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/incline-push-ups.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/incline-push-ups.jpg"},
+  {keys:["glute bridge"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/hip-raise-bridge.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/hip-raise-bridge.jpg"},
+  {keys:["dead bug"],url:"https://www.trainaiapp.com/exercises/dead-bug/",type:"page",label:"Dead Bug animated demonstration"},
+  {keys:["side plank"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/side-bridge-side-plank.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/side-bridge-side-plank.jpg"},
+
+  {keys:["supported reverse lunges"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/dumbbell-lunge.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/dumbbell-lunge.jpg"},
+  {keys:["chest opener"],url:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-videos/female/stretching-dynamic-chest-stretch.mp4",type:"video",poster:"https://pub-585d42eb1aa64a67aedf483ec328d3fe.r2.dev/exercise-posters/female/stretching-dynamic-chest-stretch.jpg"},
+
+  // Added only for movements that had no original demo mapping. Original female library entries above are preserved.
+  {keys:["cat-cow"],url:"https://www.youtube.com/embed/FLQDjUccsko",type:"youtube",label:"Cat-Cow mobility demonstration"},
+  {keys:["child's pose"],url:"https://www.youtube.com/embed/KVItAfkdGi0",type:"youtube",label:"Child's Pose demonstration"},
+  {keys:["lateral raise"],url:"https://www.youtube.com/embed/50usqUBOahg",type:"youtube",label:"Lateral Raise shoulder demonstration"},
+  {keys:["bicep curl"],url:"https://www.youtube.com/embed/5mDNhIwhsu0",type:"youtube",label:"Biceps Curl demonstration"},
+  {keys:["wall angels"],url:"https://video.wixstatic.com/video/953634_be5ebfe0d80c4196bfceea8b79f1ecf7/1080p/mp4/file.mp4",type:"video",label:"Wall Angels shoulder mobility demonstration"}
+
  ];
  let demo=null;
  for(const item of videoMap){if(item.keys.some(k=>n.includes(k))){demo=item;break;}}
  const vid="demo-"+dayIndex+"-"+i;
- let demoMarkup=demo&&demo.type==="youtube"
-  ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><div class="video-frame"><iframe loading="lazy" title="'+demo.label+'" src="'+demo.url+'?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="demo-caption">Embedded demonstration for '+e[0]+'.</p></details>'
-  : demo&&demo.type==="video"
-  ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><video controls playsinline preload="metadata"><source src="'+demo.url+'" type="video/mp4">Your browser does not support embedded video.</video><p class="demo-caption">Movement-specific demonstration for '+e[0]+'.</p></details>'
+ let demoMarkup=demo&&demo.type==="video"
+  ? '<details class="demo-details"><summary>▶ Watch this exact exercise (female demonstration)</summary><video controls playsinline muted loop preload="none" poster="'+(demo.poster||"")+'"><source src="'+demo.url+'#t=0,10" type="video/mp4">Your browser does not support embedded video.</video><p class="demo-caption">This clip is assigned specifically to '+e[0]+'.</p></details>'
   : demo&&demo.type==="page"
   ? '<details class="demo-details"><summary>▶ View this exercise animation</summary><iframe loading="lazy" title="'+e[0]+' animated demonstration" src="'+demo.url+'" allow="fullscreen; picture-in-picture"></iframe><p class="demo-caption">Exercise-specific animated guide.</p></details>'
-  : '<div class="demo-missing">No suitable embedded clip has been verified for this movement yet. Use the written instructions and skip anything uncomfortable.</div>';
+  : demo&&demo.type==="youtube"
+  ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><div class="video-frame"><iframe loading="lazy" title="'+demo.label+'" src="'+demo.url+'?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="demo-caption">Supplemental embedded demonstration for '+e[0]+'.</p></details>'
+  : '<div class="demo-missing">No matching demonstration has been added for this movement yet. Follow the written steps and move gently.</div>';
  return '<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><details class="benefit-details"><summary>See 3 benefits</summary><ul>'+benefits.map(x=>'<li>'+x+'</li>').join('')+'</ul></details><details class="howto-details"><summary>How to perform it correctly</summary><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><p><b>Target:</b> '+e[2]+'. Rest 45–90 seconds between strength sets. Breathe normally.</p></details>'+demoMarkup+'</article>';
 }
 const nav=document.getElementById('dayNav'), content=document.getElementById('dayContent');
