@@ -26,7 +26,7 @@ button:focus-visible,input:focus-visible{outline:3px solid #c7a6d5;outline-offse
 <header class="hero">
   <div class="eyebrow">A gentle, consistent routine</div>
   <h1>Her Wellness<br>Weekly Planner</h1>
-  <p>A practical seven-day plan for strength, steady energy, nourishing meals, skin and hair-supportive nutrition, and recovery — adapted to night-shift life.</p>
+  <p>A practical seven-day plan built around her routine: waking around 3:00 PM, starting work around 8:00 PM, and sleeping around 8:00 AM.</p>
   <div class="pill">52 kg · 5 ft · Age 27 · Home workout plan</div>
 </header>
 <section class="stats" aria-label="Weekly targets">
@@ -49,12 +49,16 @@ button:focus-visible,input:focus-visible{outline:3px solid #c7a6d5;outline-offse
 </section>
 <section class="panel">
   <h2>Night-shift timing: how to use this plan</h2>
-  <p class="sub">Follow the order relative to when she wakes and starts work, rather than forcing conventional clock times.</p>
+  <p class="sub">Use these approximate India-time slots as a starting point. Shift them slightly if her work or appetite varies.</p>
   <div class="timeline">
-    <div class="item"><div class="time">After waking</div><div><h3>Hydrate + first meal</h3><p>Water, then a balanced meal within a comfortable period after waking. Get daylight exposure if possible.</p></div></div>
-    <div class="item"><div class="time">Before shift</div><div><h3>Main meal + movement</h3><p>Have a proper meal. Do the day's workout before work if energy allows; otherwise do a shorter walk or mobility session.</p></div></div>
-    <div class="item"><div class="time">During shift</div><div><h3>Meal + planned snack</h3><p>Pack a balanced meal and one snack. Avoid relying on sugary energy drinks or skipping meals.</p></div></div>
-    <div class="item"><div class="time">After shift</div><div><h3>Light food, wind down, sleep</h3><p>If hungry, choose a small snack. Keep the room dark, quiet and cool; aim for 7–9 hours of sleep.</p></div></div>
+    <div class="item"><div class="time">3:00 PM</div><div><h3>Wake up + hydrate</h3><p>Have a glass of water. Freshen up and give herself a few minutes to wake fully.</p></div></div>
+    <div class="item"><div class="time">3:15 PM</div><div><h3>Pre-workout snack</h3><p>1 medium banana + water. If she enjoys juice, add a small 150 ml glass of fresh, unsweetened juice; whole fruit is usually more filling. No energy drink or added sugar needed.</p></div></div>
+    <div class="item"><div class="time">3:45 PM</div><div><h3>Workout of the day</h3><p>Start the planned session after the snack settles. If she feels hungry or weak, add a little curd or toast and wait longer. On recovery/rest days, take an easy walk or stretch instead.</p></div></div>
+    <div class="item"><div class="time">4:30–5:00 PM</div><div><h3>Post-workout meal</h3><p>Have a proper meal with protein and carbohydrates: for example eggs/paneer/tofu or dal, with roti/rice and vegetables. Do not rely on juice alone after exercise.</p></div></div>
+    <div class="item"><div class="time">7:00 PM</div><div><h3>Meal before work</h3><p>Eat a balanced main meal before the 8 PM shift: rice/roti, dal/beans or another protein, vegetables and curd.</p></div></div>
+    <div class="item"><div class="time">11:00 PM</div><div><h3>Shift snack</h3><p>Fruit with roasted chana or nuts, or plain curd/yoghurt. Keep water nearby.</p></div></div>
+    <div class="item"><div class="time">2:00–3:00 AM</div><div><h3>Meal during shift</h3><p>Pack a complete meal such as khichdi with dal and curd, or roti with paneer/egg/chicken and vegetables.</p></div></div>
+    <div class="item"><div class="time">6:30–7:00 AM</div><div><h3>After-shift light snack, if hungry</h3><p>Milk/fortified soy milk, curd or a small bowl of oats. Wind down and aim to sleep around 8 AM.</p></div></div>
   </div>
 </section>
 <section class="panel">
@@ -84,10 +88,10 @@ function render(){
  const checks=d.habits.map((h,i)=>`<div class="check ${saved[i]?'done':''}"><input type="checkbox" id="c${i}" data-check="${i}" ${saved[i]?'checked':''}><label for="c${i}">${h}</label></div>`).join('');
  content.innerHTML=`
  <section class="panel">
-  <div class="day-head"><div><div class="tag">${d.focus}</div><h2 style="margin-top:10px">${d.name}'s plan</h2><p class="sub">Workout time: ${d.duration} · Adjust the clock times to her actual shift.</p></div><div style="min-width:150px"><b id="progressText">0/${d.habits.length} habits</b><div class="progress"><div id="progressBar"></div></div><div class="progress-label">Daily consistency</div></div></div>
+  <div class="day-head"><div><div class="tag">${d.focus}</div><h2 style="margin-top:10px">${d.name}'s plan</h2><p class="sub">Wake: around 3:00 PM · Workout: around 3:45 PM · Shift: around 8:00 PM · Sleep: around 8:00 AM.</p></div><div style="min-width:150px"><b id="progressText">0/${d.habits.length} habits</b><div class="progress"><div id="progressBar"></div></div><div class="progress-label">Daily consistency</div></div></div>
   <div class="grid">
    <div><div class="section-title">Today's meal schedule</div><div class="timeline">${d.meals.map((m,i)=>`<div class="item meal"><div class="time">${m[0]}</div><div><h3>${i===1?'Main meal':i===0?'First meal':i===2?'Snack':i===3?'Shift meal':'Wind-down'}</h3><p>${m[1]}</p></div></div>`).join('')}</div></div>
-   <div><div class="section-title">Workout · ${d.duration}</div><div class="exercise-list">${d.exercises.map(e=>`<div class="exercise"><h3>${e[0]} <span class="dose">· ${e[2]}</span></h3><p>${e[1]}</p></div>`).join('')}</div><div class="note soft" style="margin-top:12px"><b>Effort guide:</b> Keep it comfortable to moderate (about 5–6/10). Rest 45–90 seconds between sets. Stop for pain, dizziness, chest discomfort or unusual breathlessness.</div></div>
+   <div><div class="section-title">Workout · ${d.duration}</div><div class="note" style="margin-bottom:12px"><b>Before you start — have you had your pre-workout snack?</b><br>At around 3:15 PM: 1 medium banana and a glass of water. Optional: 150 ml fresh, unsweetened orange, watermelon or pomegranate juice. Choose one small juice serving, not a large bottle. Let the snack settle for 20–30 minutes before exercising.</div><div class="exercise-list">${d.exercises.map(e=>`<div class="exercise"><h3>${e[0]} <span class="dose">· ${e[2]}</span></h3><p>${e[1]}</p></div>`).join('')}</div><div class="note soft" style="margin-top:12px"><b>Effort guide:</b> Keep it comfortable to moderate (about 5–6/10). Rest 45–90 seconds between sets. Stop for pain, dizziness, chest discomfort or unusual breathlessness.</div></div>
   </div>
  </section>
  <section class="panel"><h2>Daily habit checklist</h2><p class="sub">Tick each item as she completes it. Progress is saved on this device/browser.</p><div class="checklist">${checks}</div></section>`;
