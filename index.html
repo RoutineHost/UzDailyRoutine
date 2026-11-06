@@ -47,7 +47,7 @@ body{background:radial-gradient(ellipse at top left,#f5e8f7 0%,transparent 40%),
 .benefit-details,.howto-details,.demo-details{border-radius:12px;background:#fcf9ff;border-color:#e9dff0}.benefit-details summary,.howto-details summary,.demo-details summary{color:#67458c;padding:2px;cursor:pointer;font-weight:800}
 .demo-details iframe{width:100%;height:340px;background:#f8f4fb;border-radius:12px}
 @media(max-width:720px){.wrap{padding:12px 10px 44px}.hero{padding:22px;border-radius:22px}.day-nav{grid-template-columns:repeat(4,minmax(0,1fr))}.day-section{padding:15px;scroll-margin-top:120px}.exercise-list{grid-template-columns:1fr}.day-section h2{font-size:1.6rem}.workout-overview{grid-template-columns:repeat(3,minmax(0,1fr))}.workout-overview div{padding:9px 7px}}
-.mini-demo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.mini-demo iframe{width:100%;height:210px;border:0;border-radius:10px;background:#f8f4fb}@media(max-width:720px){.mini-demo{grid-template-columns:1fr}.mini-demo iframe{height:250px}}</style>
+.mini-demo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.mini-demo iframe{width:100%;height:210px;border:0;border-radius:10px;background:#f8f4fb}@media(max-width:720px){.mini-demo{grid-template-columns:1fr}.mini-demo iframe{height:250px}}.breath-guide{display:grid;place-items:center;padding:18px}.breath-circle{width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f5d8ec,#8c6bb1);box-shadow:0 0 0 12px #f3eafa;animation:breathe 8s ease-in-out infinite}.breath-guide p{max-width:360px;text-align:center;font-size:.82rem;color:#716777;margin:18px 0 4px}@keyframes breathe{0%,100%{transform:scale(.72);opacity:.78}50%{transform:scale(1.12);opacity:1}}</style>
 </head>
 <body>
 <div class="wrap">
@@ -76,7 +76,7 @@ const days = [
 {name:"Thursday",focus:"Recovery + mobility",duration:"15–25 min",exercises:[["Easy walk","Relaxed pace outdoors or indoors","10–15 min"],["Cat-cow","Move gently through comfortable spinal range","8 reps"],["Child's pose","Use cushion support if needed","30 sec × 2"],["Chest opener","Gentle doorway stretch; no forcing","20 sec × 2"],["Breathing","Slow comfortable breathing, no breath-holding","3 min"]]},
 {name:"Friday",focus:"Full-body strength",duration:"25–35 min",exercises:[["Warm-up","Marching, arm swings and gentle squats","4 min"],["Squat to chair","Controlled sit-to-stand","2 × 10–12"],["Incline push-up","Hands on a sturdy counter or wall","2 × 8–10"],["Glute bridge","Pause briefly at the top","2 × 12"],["Standing row with band","If no band, do slow shoulder-blade squeezes","2 × 12"],["Dead bug","Slow, controlled alternating reps","2 × 8 each side"],["Cool-down","Gentle stretches","4 min"]]},
 {name:"Saturday",focus:"Low-impact cardio + balance",duration:"25–30 min",exercises:[["Low-impact dance or walk","Choose a comfortable pace; no jumping required","15–20 min"],["Supported weight shifts","Hold a sturdy chair and slowly shift weight from one foot to the other","2 × 20 sec each"],["Clamshell","Lie on side, knees bent; open top knee without rolling hips","2 × 10 each"],["Side-lying hip abduction","Lie on your side and raise the top leg without rolling your hips","2 × 10 each"],["Cool-down","Slow walk and easy stretches","4 min"]]},
-{name:"Sunday",focus:"Rest + gentle reset",duration:"10–20 min optional",exercises:[["Optional easy walk","Comfortable pace","10–15 min"],["Gentle stretching","Choose 3–4 comfortable stretches","5 min"],["Weekly reset","No formal workout required; rest is productive","5 min"]],}];
+{name:"Sunday",focus:"Rest + gentle reset",duration:"10–20 min optional",exercises:[["Optional easy walk","Comfortable pace","10–15 min"],["Child pose","Kneel, sit hips toward heels and reach arms forward","5 min"]],}];
 function exerciseCard(e,i,dayIndex){
  const n=e[0].toLowerCase();
  let benefits=["Builds everyday strength and movement confidence.","Improves control and coordination with good form.","Develops muscles used for stable, comfortable movement."];
@@ -105,7 +105,7 @@ function exerciseCard(e,i,dayIndex){
   {keys:["supported reverse lunges"],slug:"reverse-lunge",label:"Reverse Lunge"},
   {keys:["hip hinge"],slug:"bodyweight-hip-hinge",label:"Bodyweight Hip Hinge"},
   {keys:["wall angels"],slug:"wall-slide",label:"Wall Slide"},
-  {keys:["child's pose"],slug:"child-pose",label:"Child's Pose"},
+  {keys:["child pose","child's pose"],slug:"child-pose",label:"Child Pose"},
   {keys:["chest opener"],slug:"doorway-chest-stretch",label:"Doorway Chest Stretch"},
   {keys:["standing knee raise"],slug:"standing-alternating-knee-raise",label:"Standing Alternating Knee Raise"},
   {keys:["incline side plank"],slug:"incline-forearm-side-plank",label:"Incline Forearm Side Plank"},
@@ -128,7 +128,7 @@ function exerciseCard(e,i,dayIndex){
   ? '<details class="demo-details"><summary>▶ See gentle cool-down demos</summary><div class="mini-demo"><iframe loading="lazy" title="Child pose demo" src="https://www.trainaiapp.com/exercises/child-pose/"></iframe><iframe loading="lazy" title="Cat cow demo" src="https://www.trainaiapp.com/exercises/cat-cow/"></iframe></div></details>'
   : demo&&demo.slug!=="breathing"
   ? '<details class="demo-details"><summary>▶ See the '+demo.label+' demonstration</summary><iframe loading="lazy" title="'+demo.label+' animated exercise demonstration" src="https://www.trainaiapp.com/exercises/'+demo.slug+'/" allow="fullscreen; picture-in-picture"></iframe><p class="demo-caption">Movement-specific animated guide displayed inside this planner.</p></details>'
-  : '<div class="demo-missing">Use the written cue above for this breathing step; no separate animation is needed.</div>';
+  : n.includes("breathing") ? '<details class="demo-details"><summary>▶ Follow the breathing rhythm</summary><div class="breath-guide"><div class="breath-circle"></div><p>Inhale gently as the circle expands; exhale slowly as it contracts. Keep breathing comfortable—no breath-holding.</p></div></details>' : '<div class="demo-missing">No separate animation is needed for this short recovery cue.</div>';
  return '<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><details class="benefit-details"><summary>See 3 benefits</summary><ul>'+benefits.map(x=>'<li>'+x+'</li>').join('')+'</ul></details><details class="howto-details"><summary>How to perform it correctly</summary><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><p><b>Target:</b> '+e[2]+'. Rest 45–90 seconds between strength sets. Breathe normally.</p></details>'+demoMarkup+'</article>';
 }
 
