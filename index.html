@@ -161,7 +161,6 @@ document.querySelectorAll('[data-habit]').forEach(el=>{
  el.addEventListener('change',()=>{state[el.dataset.habit]=el.checked;localStorage.setItem(k,JSON.stringify(state));});
 });
 
-render();
 </script>
 </body>
 </html>
