@@ -127,29 +127,6 @@ document.querySelectorAll('[data-habit]').forEach(el=>{
  el.addEventListener('change',()=>{state[el.dataset.habit]=el.checked;localStorage.setItem(k,JSON.stringify(state));});
 });
 
-const nav=document.getElementById('dayNav'), content=document.getElementById('dayContent');
-const displayDays=[days[6],...days.slice(0,6)];
-nav.innerHTML=displayDays.map(d=>'<a class="day-btn" href="#day-'+d.name.toLowerCase()+'">'+d.name+'</a>').join('');
-const daySections=displayDays.map((d,di)=>{
- const key='herwellness-'+d.name.toLowerCase();
- const meals=d.meals.map((m,i)=>{
-  const labels=["Post-workout meal","Pre-shift main meal","Shift snack","Meal during shift","After-shift wind-down"];
-  const times=["4:30–5:00 PM","7:00 PM","11:00 PM","2:00–3:00 AM","6:30–7:00 AM"];
-  const b=mealBenefits(m[1]);
-  return '<div class="item meal"><div class="time">'+times[i]+'</div><div><h3>'+labels[i]+'</h3><p>'+m[1]+'</p><details class="food-benefits"><summary>Why this meal helps</summary><ul>'+b.map(x=>'<li>'+x+'</li>').join('')+'</ul></details></div></div>';
- }).join('');
- const exercises=d.exercises.map((e,i)=>exerciseCard(e,i,di)).join('');
- const habits=d.habits.map((h,i)=>'<label class="check"><input type="checkbox" data-habit="'+d.name.toLowerCase()+'-'+i+'"><span>'+h+'</span></label>').join('');
- return '<section class="panel day-section" id="day-'+d.name.toLowerCase()+'"><div class="day-head"><div><div class="tag">'+d.focus+'</div><h2>'+d.name+' workout & meal plan</h2><p class="sub">Wake ~3:00 PM · Pre-workout snack ~3:15 PM · Workout ~3:45 PM · Shift ~8:00 PM · Sleep ~8:00 AM</p></div><span class="tag">'+d.duration+'</span></div><div class="workout-overview"><div><b>'+d.duration+'</b><span>Session time</span></div><div><b>3:45 PM</b><span>Workout start</span></div><div><b>5–6/10</b><span>Comfortable effort</span></div></div><div class="preworkout"><h3>🍌 Pre-workout snack · 3:15 PM</h3><p><b>Easy option:</b> one medium banana + a glass of water. Optional 100–150 ml fresh unsweetened juice. If still hungry, add half a cup of plain curd or one slice of toast. Wait 20–30 minutes before exercising.</p><p><b>Why:</b> carbohydrate provides readily available workout fuel; water supports hydration. Juice is optional, and whole fruit is more filling.</p></div><div class="grid"><div><div class="section-title">Meal plan</div><div class="timeline">'+meals+'</div></div><div><div class="section-title">Exercise guide</div><div class="exercise-list">'+exercises+'</div></div></div><div class="section-title" style="margin-top:18px">Daily habits</div><div class="checklist">'+habits+'</div></section>';
-}).join('');
-content.innerHTML=daySections;
-document.querySelectorAll('[data-habit]').forEach(el=>{
- const k='herwellness-habits';
- const state=JSON.parse(localStorage.getItem(k)||'{}');
- el.checked=!!state[el.dataset.habit];
- el.addEventListener('change',()=>{state[el.dataset.habit]=el.checked;localStorage.setItem(k,JSON.stringify(state));});
-});
-
 </script>
 </body>
 </html>
