@@ -93,10 +93,20 @@ else if(n.indexOf('bridge')>=0)steps=['Lie on your back with knees bent and feet
 else if(n.indexOf('bird dog')>=0)steps=['Start on hands and knees, hands under shoulders.','Extend opposite arm and leg while keeping hips level.','Return slowly and switch sides without twisting.'];
 else if(n.indexOf('dead bug')>=0)steps=['Lie on your back with arms raised and knees over hips.','Brace abdomen gently and keep back steady.','Lower opposite arm and leg slowly, return, then switch.'];
 var videoId='female-demo-'+i;
-var videoUrl=n.indexOf('push')>=0?'https://www.youtube-nocookie.com/embed/NL8IRKjLPf0?rel=0':'https://www.youtube-nocookie.com/embed/mUns8O4YL5M?rel=0';
-var videoTitle=n.indexOf('push')>=0?'NHS female instructor: standing press-up':'Joanna Soh: beginner full-body strength workout without jumping';
-var videoNote=n.indexOf('push')>=0?'Laura from the NHS demonstrates the standing press-up.':'Female-led beginner full-body routine. Use the matching movement shown in the session; this is a general demonstration, not a one-exercise clip.';
-var html='<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><div class="benefit"><b>Benefit:</b> '+benefit+'</div><b>How to do it</b><ol>'+steps.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol><p><b>Sets / time:</b> '+e[2]+'. Rest 45–90 seconds between strength sets.</p><button type="button" class="video-toggle" data-video="'+videoId+'">▶ Play video in planner</button><div class="video-panel" id="'+videoId+'"><iframe title="'+videoTitle+'" loading="lazy" src="'+videoUrl+'" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><div class="video-caption">'+videoNote+'</div></div></article>';
+var demoMap=[
+ {match:['bird dog'],url:'https://macrosinc.net/exercises/core/bird-dog/',label:'Bird Dog — female demonstration'},
+ {match:['glute bridge'],url:'https://macrosinc.net/exercises/glutes/glute-bridge/',label:'Glute Bridge — female demonstration'},
+ {match:['chair/bodyweight squats','squat to chair'],url:'https://macrosinc.net/exercises/legs/bodyweight-box-squat/',label:'Bodyweight Box Squat — female demonstration'},
+ {match:['calf raises'],url:'https://macrosinc.net/exercises/legs/standing-calf-raise/',label:'Standing Calf Raise — female demonstration'},
+ {match:['supported reverse lunges'],url:'https://macrosinc.net/exercises/legs/dumbbell-lunge/',label:'Lunge — female demonstration'},
+ {match:['clamshell'],url:'https://macrosinc.net/exercises/glutes/band-fire-hydrant/',label:'Glute / hip movement — female demonstration'}
+];
+var demo=null;
+for(var di=0;di<demoMap.length;di++){if(demoMap[di].match.some(function(k){return n.indexOf(k)>=0;})){demo=demoMap[di];break;}}
+var videoHtml=demo
+ ? '<button type="button" class="video-toggle" data-video="'+videoId+'">▶ Play this exercise demonstration</button><div class="video-panel" id="'+videoId+'"><iframe title="'+demo.label+'" loading="lazy" src="'+demo.url+'" allow="fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="video-caption">'+demo.label+'. This embedded page is specific to this movement and offers the female-demo option.</div></div>'
+ : '<div class="video-caption">A verified, matching female demonstration is not yet available for this movement, so no unrelated video is shown.</div>';
+var html='<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><div class="benefit"><b>Benefit:</b> '+benefit+'</div><b>How to do it</b><ol>'+steps.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ol><p><b>Sets / time:</b> '+e[2]+'. Rest 45–90 seconds between strength sets.</p>'+videoHtml+'</article>';
 return html;
 }
 const nav=document.getElementById('dayNav'), content=document.getElementById('dayContent');
