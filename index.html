@@ -113,7 +113,7 @@ function exerciseCard(e,i,dayIndex){
   {keys:["cool-down"],url:"https://www.youtube.com/embed/1kD_Q-cxgNA",type:"youtube",label:"Female-led full-body cool-down · Julia Reppel"},
   {keys:["dumbbell lateral raise"],url:"https://www.youtube.com/embed/6a-sO62TN5E",type:"youtube",label:"Female dumbbell lateral raise · Shelley Darlington"},
   
-  {keys:["wall angels"],url:"https://video.wixstatic.com/video/953634_be5ebfe0d80c4196bfceea8b79f1ecf7/1080p/mp4/file.mp4",type:"video",label:"Wall Angels shoulder mobility demonstration"}
+  {keys:["wall angels"],url:"https://player.vimeo.com/video/293064079",type:"vimeo",label:"Female Wall Angels demonstration · Lorae Metrolis"}
 
  ];
  let demo=null;
@@ -123,8 +123,8 @@ function exerciseCard(e,i,dayIndex){
   ? '<details class="demo-details"><summary>▶ Watch this exact exercise (female demonstration)</summary><video controls playsinline muted loop preload="none" poster="'+(demo.poster||"")+'"><source src="'+demo.url+'#t=0,10" type="video/mp4">Your browser does not support embedded video.</video><p class="demo-caption">This clip is assigned specifically to '+e[0]+'.</p></details>'
   : demo&&demo.type==="page"
   ? '<details class="demo-details"><summary>▶ View '+(demo.label||e[0])+'</summary><div class="video-frame"><iframe loading="lazy" title="'+(demo.label||e[0])+'" src="'+demo.url+'" allow="fullscreen; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p class="demo-caption">Exercise-specific demonstration displayed inside this planner.</p></details>'
-  : demo&&demo.type==="youtube"
-  ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><div class="video-frame"><iframe loading="lazy" title="'+demo.label+'" src="'+demo.url+'?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="demo-caption">Supplemental embedded demonstration for '+e[0]+'.</p></details>'
+  : (demo&&demo.type==="youtube"||demo&&demo.type==="vimeo")
+  ? '<details class="demo-details"><summary>▶ Watch '+demo.label+'</summary><div class="video-frame"><iframe loading="lazy" title="'+demo.label+'" src="'+demo.url+(demo.type==="youtube"?"?rel=0&modestbranding=1":"?title=0&byline=0&portrait=0") + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p class="demo-caption">Supplemental embedded demonstration for '+e[0]+'.</p></details>'
   : '<div class="demo-missing">No matching demonstration has been added for this movement yet. Follow the written steps and move gently.</div>';
  return '<article class="exercise"><h3>'+(i+1)+'. '+e[0]+' <span class="dose">· '+e[2]+'</span></h3><p>'+e[1]+'</p><details class="benefit-details"><summary>See 3 benefits</summary><ul>'+benefits.map(x=>'<li>'+x+'</li>').join('')+'</ul></details><details class="howto-details"><summary>How to perform it correctly</summary><ol>'+steps.map(x=>'<li>'+x+'</li>').join('')+'</ol><p><b>Target:</b> '+e[2]+'. Rest 45–90 seconds between strength sets. Breathe normally.</p></details>'+demoMarkup+'</article>';
 }
